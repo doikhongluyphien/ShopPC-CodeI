@@ -1,0 +1,202 @@
+#wrap {
+	padding: 0 0px;
+	min-width: 650px;
+	width: 924px;
+	/*temp solution*/
+	margin: 0 auto;
+	background: #FFFFFF;
+	border-left:  solid 1px #CCCCCC;
+	border-right:  solid 1px #CCCCCC;
+	border-bottom:  solid 1px #CCCCCC;
+
+}
+/* Menu */
+#nav2 {float:left; width:980px; border:none; color:#FFFFFF; font-size:11px;margin:8px 0 0 0;} 
+
+#nav2 ul {list-style-type:none;margin:0 0 0 10px ;padding: 0}
+
+#nav2 ul li {float:left; position:relative; z-index:1000; background:url(../images/tab_r.png) no-repeat right top;margin: 0 5px 0 0;}
+
+#nav2 ul li a:link,
+
+#nav2 ul li a:visited {
+
+	background:url(../images/tab_l.png) no-repeat left top;
+
+	color: #FFFFFF;
+
+}
+
+#nav2 ul li.parent-active {float:left; position:relative; z-index:1000;background:url(../images/tab_r.png) no-repeat right -100px;}
+
+#nav2 ul li.parent-active a:link,
+
+#nav2 ul li.parent-active a:visited {
+
+	background:url(../images/tab_l.png) no-repeat left -100px;
+}
+
+#nav2 ul li.parent-active a:hover {
+
+	background:url(../images/tab_l.png) no-repeat left -50px;
+
+}
+
+#nav2 ul li ul {display:none; border:none;}
+
+#nav2 ul li ul {margin-left:0px; padding:0 0 0 0;border-top: 5px solid #A90C0C;
+
+} 
+
+#nav2 ul li a {float:left; display:block; height:27px; line-height:27px; margin-right:0px !important /*Non-IE6*/; margin-right:-4px /*IE6*/; padding:0 15px 0 15px; text-decoration:none; font-weight:bold; color: rgb(100,100,100);}
+
+#nav2 ul li:hover {width:auto;background:url(../images/tab_r.png) no-repeat right -50px;}
+
+
+
+#nav2 table {position:absolute; z-index:999; top:0; left:0; border-collapse:collapse; font-family:Arial,sans-serif;}
+
+
+
+/*Non-IE6*/
+
+#nav2 ul li:hover a {background-color:rgb(210,210,210); text-decoration:none;}
+
+ /*Color main cells hovering mode*/
+
+#nav2 ul li:hover a:link,
+
+#nav2 ul li:hover a:visited {
+
+	background:url(../images/tab_l.png) no-repeat left -50px;
+
+	color: #FFFFFF;
+
+}
+
+#nav2 ul li:hover ul {display:block; position:absolute; z-index:998; top:25px; margin-top:0.1em; left:0;}
+
+#nav2 ul li:hover ul li ul {display: none;}
+
+#nav2 ul li:hover ul li {
+
+
+
+	margin: 0;
+
+	background: none;
+
+	padding: 0;
+
+}
+
+#nav2 ul li:hover ul li a {display:block; width:150px;  margin-left:-1px; padding:0px 16px 0px 16px; border-left:solid 1px rgb(175,175,175); border-bottom: solid 1px rgb(175,175,175); background:none; font-weight:normal; color:rgb(50,50,50);} /*Color subcells normal mode*/
+
+#nav2 ul li:hover ul li a:hover {background-color:rgb(210,210,210); text-decoration:none;} /*Color subcells hovering mode*/
+
+#nav2 ul li:hover ul li a:link,
+
+#nav2 ul li:hover ul li a:visited {
+
+	display: block;
+
+	border-top: 1px solid #CA3520;
+
+	border-bottom: 1px solid #A52C1A;
+
+	background: #B8301D none;
+
+	padding: 0 10px 0 10px;
+
+	color: #ffffff;
+
+	font-size: .9em;
+
+	font-weight: normal;
+
+	text-decoration: none;
+
+
+
+}
+
+#nav2 ul li:hover ul li a:hover {
+
+		background: #D33721 none;
+
+}
+
+/*IE6*/
+
+#nav2 ul li {width:auto;background:url(../images/tab_r.png) no-repeat right top;}
+
+#nav2 ul li.sfhover {width:auto;background:url(../images/tab_r.png) no-repeat right -50px;}
+
+
+
+#nav2 ul li a:hover {
+
+	background:url(tab_l.png) no-repeat left -50px;
+
+	color: #FFFFFF;
+
+	text-decoration: none;
+
+} /*Color main cells hovering mode*/
+
+#nav2 ul li a:hover ul {display:block; position:absolute;z-index: 998; top:27px; t\op:27px; left:0;margin: 0;padding: 0; }
+
+#nav2 ul li a:hover ul li a:link,
+
+#nav2 ul li a:hover ul li a:visited
+
+{
+
+ 		display: block;
+
+	border-top: 1px solid #CA3520;
+
+	border-bottom: 1px solid #A52C1A;
+
+	background: #B8301D none;
+
+	padding: 0 10px 0 10px;
+
+	color: #ffffff;
+
+	font-size: .9em;
+
+	font-weight: normal;
+
+	text-decoration: none;
+
+	width: 150px;
+
+/*		height: 27px;*/
+
+} 
+
+#nav2 ul li a:hover ul li a:hover {
+
+		background: #D33721 none;
+
+}
+
+#nav2 ul li a:hover ul li a ul {visibility:hidden; height:0px; width:0px; position:absolute; z-index: 997;}
+/* END OF Menu */
+
+
+.jhc_h {
+	background: #F4F4F4 url(./styles/prosilver/theme/images/toolbar_bg.png) no-repeat center top;
+	height: 34px;
+	border-top: 1px solid #D4D4D4;
+	border-bottom: 5px solid #A90C0C;
+	width: 100%;
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+#jsm-gg-ctsearch {
+	text-align: right;
+}
