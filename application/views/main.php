@@ -65,7 +65,7 @@
                 <a href="#" title="Chọn cấu hình máy tính" />
                     <img src="<?php echo base_url(); ?>style/images/choncauhinh.gif" class="spac" alt="Chọn cấu hình máy tính"/>
                 </a> 
-                <a href="#" title="Chương trình khuyến mãi" />
+                <a href="<?php echo base_url('khuyen-mai') ?>" title="Chương trình khuyến mãi" />
                     <img src="<?php echo base_url(); ?>style/images/khuyenmai.gif" class="spac" alt="Chương trình khuyến mãi"/>
                 </a> 
                 <a href="<?php echo link_cat(2) ?>" title="Máy tính thương hiệu" />
