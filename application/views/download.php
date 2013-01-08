@@ -6,7 +6,7 @@
 </div>
 
 <div class="list">
-    <form action="" method="POST" name="baogia">
+    <form action="<?php echo base_url('print')?>" method="POST" name="baogia">
         <div class="bgtitle"><b>Các file báo giá có sẵn </b></div>
         <?php
             if (isset($download))

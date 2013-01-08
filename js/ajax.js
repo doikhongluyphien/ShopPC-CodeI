@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('#s_parent').change(function(){
+    $('#s_parent').bind('change',function(){
         var v = $('#s_parent option:selected').val();
         $('#loading').fadeIn("fast");
         $.ajax({

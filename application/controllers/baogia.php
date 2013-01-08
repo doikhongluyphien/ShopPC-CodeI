@@ -25,6 +25,19 @@ class Baogia extends CI_Controller {
             $data['info'] = $this->mbaogia->getInfoProduct($this->uri->segment(2));
             $this->load->view('baogia',$data);
         }
+        elseif ($this->input->post('inbaogia'))
+        {
+            if ($this->input->post('bgdid'))
+            {
+                $data['list_product'] = $this->mbaogia->getInfoProductInChild($this->input->post('bgdid'));
+                $data['mota'] = $this->input->post('mota');
+                $this->load->view('baogia',$data);
+            }
+            else
+            {
+                echo "Khong ton tai";
+            }
+        }
         
         
     }

@@ -53,6 +53,7 @@ $route['duong-di'] = 'home/duongdi';
 $route['khuyen-mai'] = 'home/khuyenmai';
 $route['download'] = 'home/download';
 $route['print/:num'] = 'baogia/printProduct';
+$route['print'] = 'baogia/printProduct';
 
 
 

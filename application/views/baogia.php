@@ -10,10 +10,6 @@
     </style>
 </head>
 <body>
-    <?php
-        if($this->uri->segment(2))
-        {
-    ?>
             <table cellpadding="1" cellspacing="1" border="0" style="border:1px solid #ccc; padding:5px">
                 <tr>
                     <td>
@@ -37,13 +33,18 @@
                 <tr>
                     <td align="center">
                         <table cellpadding="0" cellspacing="0" border="1" width="650" bgcolor="#A2A2A2" style="border-collapse: collapse;">
+                        <?php
+                         if($this->uri->segment(2))
+                         {
+                        ?>
                             <tr bgcolor="#F1F1F1" height="25">
                                 <td align="center"><b>Sản phẩm</b></td>
                                 <td align="center" width="65"><b>Bảo hành</b></td>
                                 <td align="center" width="90"><b>Báo giá VNĐ</b></td>
                             </tr>
                         <?php
-                            if (isset($info))
+                       
+                            if (isset($info) && !empty($info))
                             {
                         ?>
                                 <tr bgcolor="#ffffff">
@@ -75,6 +76,57 @@
                             {
                                 echo "<tr bgcolor=\"#ffffff\"><td colspan=\"3\" align=\"center\" height=\"22\">Không có sản phẩm nào !</td></tr>";
                             }
+                        }
+                        else
+                        {
+                        ?>
+                            <tr bgcolor="#f1f1f1">
+                                <td align="center" width="35" height="25"><b>STT</b></td>
+                                <td align="center"><b>Sản phẩm</b></td>
+                                <td align="center" width="63"><b>Bảo hành</b></td>
+                                <td align="center" width="92"><b>Giá VNĐ</b></td>
+                            </tr>
+                        <?php       
+                            if (isset($list_product))
+                            {
+                                foreach ($list_product as $row => $value)
+                                {
+                                ?>
+                                    <tr bgcolor="#f8ffff">
+                                        <td colspan="4" align="center" height="22">
+                                            <font color="blue"><b>Loại sản phẩm - <?php echo $row ?></b></font>
+                                        </td>
+                                    </tr>
+                                <?php
+                                    $stt = 1;
+                                    foreach ($value as $_row)
+                                    {
+                                ?>
+                                        <tr bgcolor="#ffffff">
+                                            <td align="center" width="35" height="22"><?php echo $stt ?></td>
+                                            <td align="justify" style="padding: 5px;">
+                                                <b><?php echo $_row['sptitle']?></b><br />
+                                                <?php
+                                                    if ($mota=='on')
+                                                        echo "<br />{$_row['spdes']}"
+                                                ?>
+                                            </td>
+                                            <td align="center" width="60">
+                                                <b><?php echo "{$_row['spbh']}t"?></b>
+                                            </td>
+                                            <td align="right" width="95" style="padding-right:5px;">
+                                                <b><?php echo number_format($_row['spgia'],0,",",".")?></b>
+                                            </td>
+                                        </tr>
+                                            
+                                        
+                                <?php
+                                        $stt++;
+                                    } 
+                                }
+                            }
+	
+                        }
                         ?>
                         </table>
                     </td>
@@ -90,11 +142,8 @@
                     </td>
                 </tr>
                 <tr bgcolor="#ffffff">
-                    <td height="40" align="center"><b>CẢM ƠN QUÝ KHÁCH ĐÃ QUAN TÂM ĐẾN SẢN PHẨM CÔNG TY CHŨNG TÔI</b></td>
+                    <td height="40" align="center"><b>CẢM ƠN QUÝ KHÁCH ĐÃ QUAN TÂM ĐẾN SẢN PHẨM CÔNG TY CHÚNG TÔI</b></td>
                 </tr>
             </table>
-    <?php
-        }
-    ?>
 </body>
 </html>

@@ -20,12 +20,12 @@
     <div class="fcopy fr">
         <div class="ctop">
             <a href="./">Trang chủ</a>
-            <span>|</span><a href="index.php?mod=gioithieu">Giới thiệu</a>
-            <span>|</span><a href="index.php?mod=chinhsach">Chính sách</a>
-            <span>|</span><a href="index.php?mod=baohanh">Bảo hành</a>
-            <span>|</span><a href="index.php?mod=sododuongdi">Sơ đồ đường đi</a>
-            <span>|</span><a href="index.php?mod=tintuc">Tin tức</a>
-            <span>|</span><a href="index.php?mod=lienhe">Liên hệ</a>
+            <span>|</span><a href="<?php echo base_url('gioi-thieu')?>">Giới thiệu</a>
+            <span>|</span><a href="<?php echo base_url('chinh-sach')?>">Chính sách</a>
+            <span>|</span><a href="<?php echo base_url('bao-hanh')?>">Bảo hành</a>
+            <span>|</span><a href="<?php echo base_url('duong-di')?>">Sơ đồ đường đi</a>
+            <span>|</span><a href="<?php echo base_url('tin-tuc')?>">Tin tức</a>
+            <span>|</span><a href="<?php echo base_url('lien-he')?>">Liên hệ</a>
         </div>         
         <div class="cbot">BẢN QUYỀN THUỘC <?php echo $company ?> - Copyright© 2012</a><br> Địa chỉ: <?php echo $address ?> 
             <span>|</span> <?php echo $tel ?> 
