@@ -255,6 +255,15 @@ class Home extends CI_Controller {
         $this->load->view('main', $this->data);
     }
     
+    public function khuyenmai(){
+        $this->load->model('mkhuyenmai');
+        $this->getMenuDefault();
+        $this->data['title'] = array('text' => array('Các chương trình khuyến mãi'),'link' => array(base_url()."khuyen-mai"));
+        $this->data['main_page'] = 'khuyenmai';
+        $this->data['khuyenmai'] = $this->mkhuyenmai->getKhuyenMai();
+        $this->load->view('main',$this->data);
+    }
+    
     
     public function download()
     {

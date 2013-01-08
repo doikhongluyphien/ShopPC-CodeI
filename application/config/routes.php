@@ -50,6 +50,7 @@ $route['gioi-thieu'] = 'home/gioithieu';
 $route['chinh-sach'] = 'home/chinhsach';
 $route['bao-hanh'] = 'home/baohanh';
 $route['duong-di'] = 'home/duongdi';
+$route['khuyen-mai'] = 'home/khuyenmai';
 $route['download'] = 'home/download';
 $route['print/:num'] = 'baogia/printProduct';
 
