@@ -1,9 +1,3 @@
-<div class="bblock">
-    <div class="bbotr">
-        <div class="bbotl">
-        </div>
-    </div>
-</div>
 
 <div class="hblock">
     <div class="btopr">
@@ -19,10 +13,10 @@
             <tr>
                 <td></td>
                 <td align="left">
-                    <b><?php echo $company ?></b> <br /><br />
-                    Địa chỉ: <?php echo $address ?><br />
-                    Điện thoại : <?php echo $tel ?> <br />
-                    Website: <a href="<?php echo $website ?>"><?php echo $website ?></a>
+                    <b><?php echo $this->config->item('company') ?></b> <br /><br />
+                    Địa chỉ: <?php echo $this->config->item('address') ?><br />
+                    Điện thoại : <?php echo $this->config->item('tel') ?> <br />
+                    Website: <a href="<?php echo $this->config->item('website') ?>"><?php echo $this->config->item('website') ?></a>
                 </td>
             </tr>
             

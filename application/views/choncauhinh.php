@@ -17,10 +17,16 @@
                     $("#loading").fadeOut("fast");
                 },"json");
         });
+        
+        $('input[name="choncauhinh"]').click(function(e){
+           e.preventDefault();
+           $('form').attr("action","print");
+           $('form').submit();
+        });
     })
 </script>
 <div class="list">
-    <form method="GET" action="" name="choncauhinh">
+    <form method="POST" action="" name="choncauhinh" target="_blank">
         <table cellpadding="1" cellspacing="1" border="0" style="border-color:#c6c6c6;border-collapse:collapse">
             <tr>
                 <td width="610" height="24" align="center">
@@ -410,9 +416,6 @@
                 </td>
             </tr>
             
-            
-            
-            
             <tr>
                 <td height="24" align="right">
                     <b><font color="red">Tổng tiền</font></b>
@@ -421,7 +424,27 @@
                     <b><font color="red"><span id="sum"></span></font></b>
                 </td>
             </tr>
+            
+            <tr>
+                <td colspan="2" height="30" align="center">
+                    <input type="submit" class="button" name="choncauhinh" value="In cấu hình" /> | <input type="button" class="button" onclick="showhide('guidonhang');return false" value="Đặt hàng ngay"/>  
+                </td>
+            </tr>
         </table>
+        
+        <div id="guidonhang" style="display: none;">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="200" height="22">
+                    </td>
+                    <td width="450" align="left">
+                        <font size="1" color="#FF8000">Hãy điền đầy đủ thông tin của bạn trước khi gửi đơn hàng cho chúng tôi</font>
+                    </td>
+                </tr>
+                
+                
+            </table>
+        </div>
     </form>
 </div>
 
