@@ -114,8 +114,24 @@
             <!--Begin Flash -->
         
         <div class="flash fl">
-    
-            <embed type="application/x-shockwave-flash" src="<?php echo base_url();?>style/images/tinmoi.swf" quality="high" wmode="opaque" width="735" height="245" flashvars="<?php echo "image=$fpic&amp;url=$flink&amp;info=$fcont;&amp;stopTime=5000"?>" />
+            <?php
+                if (!empty($flash))
+                {
+                    $fpic = $flink = $fcont = "";
+                    foreach ($flash as $row)
+                    {
+                        $fpic .=  $this->config->item('flash')."{$row['fdate']}.{$row['fpic']}|";
+                        $flink .= "{$row['flink']}|";
+                        $fcont .= "{$row['fcont']}|";
+                        
+                    }
+            ?>
+                    <embed type="application/x-shockwave-flash" src="<?php echo base_url();?>style/images/tinmoi.swf" quality="high" wmode="opaque" width="735" height="245" flashvars="<?php echo "image=$fpic&amp;url=$flink&amp;info=$fcont;&amp;stopTime=5000"?>" />
+            <?php
+                }
+
+            ?>
+            
         </div>
             <!--End Flash -->          
             

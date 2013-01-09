@@ -17,7 +17,7 @@
     </script>
     <link href="<?php echo base_url(); ?>style/css/style.css" rel="stylesheet" type="text/css" /> 
     <link href="<?php echo base_url(); ?>style/css/carousel-skin.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/js/highslide.css" /> 
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>js/highslide.css" /> 
     <script type="text/javascript" lang="javascript" src="<?php echo base_url(); ?>js/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" lang="javascript" src="<?php echo base_url(); ?>js/jquery.jcarousel.js"></script>
     <script type="text/javascript" lang="javascript" src="<?php echo base_url(); ?>js/highslide-with-gallery.js"></script>
@@ -62,7 +62,7 @@
         
         <div class="right fl">
             <div class="ads">
-                <a href="#" title="Chọn cấu hình máy tính" />
+                <a href="<?php echo base_url('chon-cau-hinh')?>" title="Chọn cấu hình máy tính" />
                     <img src="<?php echo base_url(); ?>style/images/choncauhinh.gif" class="spac" alt="Chọn cấu hình máy tính"/>
                 </a> 
                 <a href="<?php echo base_url('khuyen-mai') ?>" title="Chương trình khuyến mãi" />

@@ -12,29 +12,11 @@ class Home extends CI_Controller {
          //Get info footer
          
         $this->load->config('config');
-        $this->data['company'] = $this->config->item('company');   
-        $this->data['tel'] = $this->config->item('tel');
-        $this->data['address'] = $this->config->item('address');
-        $this->data['website'] = $this->config->item('website');
-        
         $this->mmain->updateVisit();
         $this->data['visit'] = $this->mmain->getVisit();
-        
-        
+
         //Get info flash
-        $flash= $this->mmain->getFlash();
-        $linkflash = $this->config->item('flash');
-        $fpic = $flink = $fcont = "";
-        foreach ($flash as $row)
-            {
-                $fpic .=  "{$linkflash}{$row['fdate']}.{$row['fpic']}|";
-                $flink .= "{$row['flink']}|";
-                $fcont .= "{$row['fcont']}|";
-            } 
-        $this->data['fpic'] = $fpic;
-        $this->data['flink'] = $flink;
-        $this->data['fcont'] = $fcont; 
-        
+        $this->data['flash']= $this->mmain->getFlash();
         
         
     }
@@ -76,14 +58,10 @@ class Home extends CI_Controller {
         
         if ( $this->uri->segment(7) && is_numeric($this->uri->segment(7)))
             $this->priceup = $this->uri->segment(7);
-       
-            
         $this->data['priceup'] = $this->priceup;
             
         if ( $this->uri->segment(9) && is_numeric($this->uri->segment(9)))
             $this->pricedown = $this->uri->segment(9);
-   
-        
         $this->data['pricedown'] = $this->pricedown;
         
         if ( $this->uri->segment(11) && is_numeric($this->uri->segment(11)))
@@ -273,6 +251,15 @@ class Home extends CI_Controller {
         $this->data['main_page'] = "download";
         $this->data['download'] = $this->mdownload->getBaoGia();
         $this->data['parent']  = $this->mdownload->getParent();
+        $this->load->view('main',$this->data);
+    }
+    
+    public function choncauhinh(){
+        $this->getMenuDefault();
+        $this->load->model('mchoncauhinh');
+        $this->data['title'] = array('text' => array('Chọn cấu hình máy tính theo ý bạn'),'link' => array(base_url()."chon-cau-hinh"));
+        $this->data['main_page'] = "choncauhinh";
+        $this->data['list_product'] = $this->mchoncauhinh->getList();
         $this->load->view('main',$this->data);
     }
 

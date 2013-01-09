@@ -27,8 +27,8 @@
             <span>|</span><a href="<?php echo base_url('tin-tuc')?>">Tin tức</a>
             <span>|</span><a href="<?php echo base_url('lien-he')?>">Liên hệ</a>
         </div>         
-        <div class="cbot">BẢN QUYỀN THUỘC <?php echo $company ?> - Copyright© 2012</a><br> Địa chỉ: <?php echo $address ?> 
-            <span>|</span> <?php echo $tel ?> 
+        <div class="cbot">BẢN QUYỀN THUỘC <?php echo $this->config->item('company') ?> - Copyright© 2012</a><br> Địa chỉ: <?php echo $this->config->item('address') ?> 
+            <span>|</span> <?php echo $this->config->item('tel') ?> 
             <span>|</span> Lượt truy cập: <?php echo $visit; ?> 
         </div>
     </div>

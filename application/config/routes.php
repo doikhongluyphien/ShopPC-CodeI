@@ -52,8 +52,10 @@ $route['bao-hanh'] = 'home/baohanh';
 $route['duong-di'] = 'home/duongdi';
 $route['khuyen-mai'] = 'home/khuyenmai';
 $route['download'] = 'home/download';
+$route['chon-cau-hinh'] = 'home/choncauhinh';
 $route['print/:num'] = 'baogia/printProduct';
 $route['print'] = 'baogia/printProduct';
+
 
 
 
