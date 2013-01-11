@@ -55,6 +55,7 @@ $route['download'] = 'home/download';
 $route['chon-cau-hinh'] = 'home/choncauhinh';
 $route['print/:any'] = 'baogia/printProduct';
 $route['print'] = 'baogia/printProduct';
+$route['gio-hang'] = 'home/giohang';
 
 
 

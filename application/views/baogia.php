@@ -34,7 +34,7 @@
                     <td align="center">
                         <table cellpadding="0" cellspacing="0" border="1" width="650" bgcolor="#A2A2A2" style="border-collapse: collapse;">
                         <?php
-                         if($this->uri->segment(2))
+                         if($this->uri->segment(2) && is_numeric($this->uri->segment(2)))
                          {
                         ?>
                             <tr bgcolor="#F1F1F1" height="25">
@@ -77,7 +77,47 @@
                                 echo "<tr bgcolor=\"#ffffff\"><td colspan=\"3\" align=\"center\" height=\"22\">Không có sản phẩm nào !</td></tr>";
                             }
                         }
-                        else
+                        elseif (isset($choncauhinh))
+                        {
+                        ?>
+                            <tr bgcolor="#F1F1F1" height="25">
+                                <td align="center"><b>Sản phẩm</b></td>
+                                <td align="center" width="65"><b>Bảo hành</b></td>
+                                <td align="center" width="90"><b>Báo giá VNĐ</b></td>
+                            </tr>
+                        <?php    
+                            foreach($choncauhinh as $row => $value)
+                            {
+                        ?>
+                                <tr bgcolor="#ffffff">
+                                    <td align="justify" style="padding: 5px;"><b><?php echo $row ?></b>
+                                        <br />
+                                        <?php echo $value['spdes'] ?>
+                                    </td>
+                                    <td align="center" width="60">
+                                        <b><?php echo $value['spbh']?>t</b>
+                                    </td>
+                                    
+                                    <td align="right" width="95" style="padding-right: 5px;">
+                                        <b><?php echo number_format($value['spgia'],0,",",".")?></b>
+                                    </td>
+                                </tr>
+                        <?php        
+                            }
+                            
+                        ?>
+                                <tr bgcolor="#f1f1f1">
+                                    <td colspan="2" align="center" height="25">
+                                        <b>Tổng tiền</b>
+                                    </td>
+                                    <td align="right" style="padding-right: 5px;">
+                                        <b><?php echo number_format($sum,0,",",".") ?></b>
+                                    </td>
+                                </tr>
+                        <?php
+                            
+                        }
+                        elseif (isset($list_product))
                         {
                         ?>
                             <tr bgcolor="#f1f1f1">
@@ -87,45 +127,107 @@
                                 <td align="center" width="92"><b>Giá VNĐ</b></td>
                             </tr>
                         <?php       
-                            if (isset($list_product))
+            
+                            foreach ($list_product as $row => $value)
                             {
-                                foreach ($list_product as $row => $value)
+                            ?>
+                                <tr bgcolor="#f8ffff">
+                                    <td colspan="4" align="center" height="22">
+                                        <font color="blue"><b>Loại sản phẩm - <?php echo $row ?></b></font>
+                                    </td>
+                                </tr>
+                            <?php
+                                $stt = 1;
+                                foreach ($value as $_row)
                                 {
-                                ?>
-                                    <tr bgcolor="#f8ffff">
-                                        <td colspan="4" align="center" height="22">
-                                            <font color="blue"><b>Loại sản phẩm - <?php echo $row ?></b></font>
+                            ?>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="35" height="22"><?php echo $stt ?></td>
+                                        <td align="justify" style="padding: 5px;">
+                                            <b><?php echo $_row['sptitle']?></b><br />
+                                            <?php
+                                                if ($mota=='on')
+                                                    echo "<br />{$_row['spdes']}"
+                                            ?>
+                                        </td>
+                                        <td align="center" width="60">
+                                            <b><?php echo "{$_row['spbh']}t"?></b>
+                                        </td>
+                                        <td align="right" width="95" style="padding-right:5px;">
+                                            <b><?php echo number_format($_row['spgia'],0,",",".")?></b>
                                         </td>
                                     </tr>
-                                <?php
-                                    $stt = 1;
-                                    foreach ($value as $_row)
-                                    {
-                                ?>
-                                        <tr bgcolor="#ffffff">
-                                            <td align="center" width="35" height="22"><?php echo $stt ?></td>
-                                            <td align="justify" style="padding: 5px;">
-                                                <b><?php echo $_row['sptitle']?></b><br />
-                                                <?php
-                                                    if ($mota=='on')
-                                                        echo "<br />{$_row['spdes']}"
-                                                ?>
-                                            </td>
-                                            <td align="center" width="60">
-                                                <b><?php echo "{$_row['spbh']}t"?></b>
-                                            </td>
-                                            <td align="right" width="95" style="padding-right:5px;">
-                                                <b><?php echo number_format($_row['spgia'],0,",",".")?></b>
-                                            </td>
-                                        </tr>
-                                            
                                         
-                                <?php
-                                        $stt++;
-                                    } 
+                                    
+                            <?php
+                                    $stt++;
+                                } 
+                            }
+                            
+	
+                        }
+                        elseif (isset($product_cart))
+                        {
+                            ?>
+                            <tr bgcolor="#f1f1f1" height="30">
+                                <td align="center"><b>Sản phẩm</b></td>
+                                <td align="center" width="63"><b>Bảo hành</b></td>
+                                <td align="center" width="40"><b>S.Lượng</b></td>
+                                <td align="center" width="80"><b>Giá</b></td>
+                                <td align="center" width="80"><b>Thành Tiền</b></td>
+                            </tr>
+                            <?php
+                            if (count($product_cart))
+                            {
+                                foreach ($product_cart as $row)
+                                {
+                            ?>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="justify" style="padding:5px">
+                                            <b><?php echo $row['sptitle'] ?></b><br />
+                                            <?php echo $row['spdes'] ?>
+                                        </td>
+                                        <td align="center">
+                                            <b><?php echo $row['spbh']?>t</b>
+                                        </td>
+                                        <td align="center">
+                                            <b><?php echo $row['qty'] ?></b>
+                                        </td>
+                                        <td align="right" style="padding-right: 5px;">
+                                            <b><?php echo number_format($row['price'],0,",",".") ?></b>
+                                        </td>
+                                        
+                                        <td align="right" style="padding-right: 5px;">
+                                            <b><?php echo number_format(($row['qty'] * $row['price']),0,",",".")?></b>
+                                        </td>
+                                        
+                                    </tr>
+                            
+                            <?php        
                                 }
                             }
-	
+                            else
+                            {
+                            ?>
+                                    <tr bgcolor="#ffffff">
+                                        <td colspan="5" align="center" height="22">
+                                            Không có sản phẩm nào
+                                        </td>
+                                    </tr>
+                            <?php
+                                    
+                            }
+                            
+                            ?>
+                                    <tr bgcolor="#f1f1f1">
+                                        <td colspan="4" align="center" height="25">
+                                            <b>Tổng tiền</b>
+                                        </td>
+                                        <td align="right" style="padding-right: 5px;">
+                                            <b><?php echo number_format($this->cart->total(),0,",",".") ?></b>
+                                        </td>
+                                    </tr>
+                            <?php
                         }
                         ?>
                         </table>

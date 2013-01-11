@@ -6,7 +6,7 @@
     }
     
     public function getInfoProduct($spid){
-        $this->db->select("spdes,spbh,spgia");
+        $this->db->select("spdes,spbh,spgia,sptitle");
         $query = $this->db->get_where("sanpham",array('spid' => $spid));
         return $query->row_array();
     }

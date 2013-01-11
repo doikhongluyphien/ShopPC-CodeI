@@ -7,7 +7,7 @@ class Home extends CI_Controller {
         
         $this->load->model(array('mmain','mleft','msanpham'));
         $this->load->helper(array('link_helper','source_helper'));
-        $this->load->library(array('captcha_','session'));
+        $this->load->library(array('captcha_','session','cart'));
         
          //Get info footer
          
@@ -199,6 +199,7 @@ class Home extends CI_Controller {
         $this->data['main_page'] = 'gioithieu';
         $this->data['gioithieu'] = $this->mgioithieu->getGioiThieu();
         $this->load->view('main',$this->data);
+		
            
     }
     
@@ -260,6 +261,16 @@ class Home extends CI_Controller {
         $this->data['title'] = array('text' => array('Chọn cấu hình máy tính theo ý bạn'),'link' => array(base_url()."chon-cau-hinh"));
         $this->data['main_page'] = "choncauhinh";
         $this->data['list_product'] = $this->mchoncauhinh->getList();
+        $this->load->view('main',$this->data);
+	
+    }
+    
+    public function giohang(){
+        $this->load->model('mgiohang');
+        $this->getMenuDefault();
+        $this->data['title'] = array('text' => array('Giỏ hàng'), 'link' => array(base_url('gio-hang')));
+        $this->data['product_cart'] = $this->mgiohang->getInfoProductCart();
+        $this->data['main_page'] = "giohang";
         $this->load->view('main',$this->data);
     }
 

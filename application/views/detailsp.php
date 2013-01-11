@@ -73,7 +73,7 @@
                 
                 ?></b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <font size="1" color="red">(<b><?php echo $row['spvat'] ?></b>)</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <img src="<?php echo base_url('images/muahang.png'); ?>" align="absmiddle" width="108" height="22" style="cursor:pointer" onclick="#"/>
+                <img src="<?php echo base_url('images/muahang.png'); ?>" align="absmiddle" width="108" height="22" style="cursor:pointer" onclick="return addCart(<?php echo $row['spid']?>)"/>
                 
             </div>
             <div class="tieude fl">Bảo hành:</div>

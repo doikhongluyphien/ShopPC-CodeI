@@ -15,6 +15,26 @@ $(document).ready(function(){
     })
 })
 
+
+function addCart(id)
+{
+    $("#loading").fadeIn("fast");
+    $.ajax({
+        type: "POST",
+        url : url + "giohang/addCart",
+        data: {spid : id},
+        success:function(data)
+        {
+            if (data==1)
+                alert('Đã khởi tạo giỏ hàng thành công');
+            $.get(url + "giohang/showLeftCart",function(data){
+                $("#giohang").html(data); 
+            });
+            $("#loading").fadeOut("fast");
+        }
+    })
+    return false;
+}
 function lienhe(){
     if ( document.contact.fullname.value == "" ) {
 	 alert( "Hãy nhập tên của bạn vào!" );

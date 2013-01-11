@@ -40,7 +40,7 @@
             <div class="pmore">
                 <div class="pdetail fl"><a href="<?php echo link_detail($row['spid'],$row['sptitle'],$row['sploai'],$seg_nsx)?>">Chi tiết</a></div>
                 <div class="fl"><a href="<?php echo base_url('print')."/". $row['spid']?>" title="In báo giá"><img src="<?php echo base_url();?>style/images/blank.gif" width="23" height="18" align="absmiddle" alt="In báo giá" /></a></div>
-                <div class="pdetail fl"><a href="#" onclick="alert('Bạn đã thêm sản phẩm vào giỏ hàng');">Mua hàng</a></div>
+                <div class="pdetail fl"><a href="#" onclick="return addCart(<?php echo $row['spid']?>)">Mua hàng</a></div>
             </div>
         </div>
       </li>  
@@ -83,7 +83,7 @@
             <div class="pmore">
                 <div class="pdetail fl"><a href="<?php echo link_detail($row['spid'],$row['sptitle'],$row['sploai'],$seg_nsx)?>">Chi tiết</a></div>
                 <div class="fl"><a href="<?php echo base_url('print')."/". $row['spid']?>" title="In báo giá"><img src="<?php echo base_url();?>style/images/blank.gif" width="23" height="18" align="absmiddle" alt="In báo giá" /></a></div>
-                <div class="pdetail fl"><a href="#" onclick="alert('Bạn đã thêm sản phẩm vào giỏ hàng');">Mua hàng</a></div>
+                <div class="pdetail fl"><a href="#" onclick="return addCart(<?php echo $row['spid']?>)">Mua hàng</a></div>
             </div>
         </div>
          <?php
