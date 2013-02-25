@@ -58,9 +58,10 @@ $route['print'] = 'baogia/printProduct';
 $route['gio-hang'] = 'home/giohang';
 
 
-
-
-
+/*
+    admin
+*/ 
+$route['admin']='admin/login';
 
 
 /* End of file routes.php */
