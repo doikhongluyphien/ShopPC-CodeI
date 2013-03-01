@@ -105,6 +105,10 @@
             $this->session->set_flashdata('main_content','_order_linhkien');
             $this->index();
         }
+        function order_list(){
+            $this->session->set_flashdata('main_content','_detail_order');
+            $this->index();
+        }
         // danh sach san pham
         function danhsachsp(){
             

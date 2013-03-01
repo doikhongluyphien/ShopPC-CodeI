@@ -30,16 +30,22 @@
                 <?php  
                     $i=1;
                     
+                    $xuat_tb="";
                     foreach ($giohang as $key => $value) {
+                     
+                     
                         while(list($key1,$value1) = each($value)){
-                           
+                                    
+                          if(!isset($value1[0]) || !is_array($value1[0])){
+                           //if(is_numeric($key1)){
                     $gtime = gmdate( "H:i", $value1['timepost'] + 25200 );
                     $gtime = $gtime." ngày ".gmdate( "d-m-Y", $value1['timepost'] + 25200 );
                             echo '<tr>';
                             echo '<td><input type="checkbox" name ="chon[]" class="choncheck" value="'.$value1["hid"].'" /></td>';
                             echo '<td>'.$i.'</td>';
                             echo '<td>'.$value1["hid"].' </td>';
-                            echo '<td class="td_left blu"><b>'.$value1["fullname"].'</b><br/>'.$value1["diachi"].'<br/>'.$value1["phone"].' - '.$value1["email"].' </td>';
+                            echo '<td class=" blu"><a href="'.base_url()."admin/proccess_main/order_list_update"."/".$value1["hid"].'"><b>'.$value1["fullname"].'</b><br/>'.$value1["diachi"].'<br/>'.$value1["phone"].' - '.$value1["email"].'</a> </td>';
+                            
                             echo '<td class="td_dm">'.$gtime.'<br /> <span class="td_left ora"> '.$value1["yeucau"].'</span></td>';
                             if ( $value1['xuly'] == "Chờ xử lý" )
                                 {
@@ -78,8 +84,9 @@
                             
                             echo "</tr>";
                             $i++;
-                            
-                            }
+                               }// end if
+                               
+                            } // end while
                         }
                 ?>
                                
@@ -89,27 +96,14 @@
                             </tbody>
         </table>
         
-        <div class="left input" style=" width:200px;">
-            <select name="sl_product" >
-                <option value="delete">Xóa mục đã chọn</option>
-            </select>
-            
-        </div>
-         <div  class="bt_sm" style="float:left;padding-top:5px;">
+        
+         <div  class="bt_sm" style="float:left;padding-top:5px;margin-left: 50px;">
+             &nbsp;&nbsp;
              <input type="submit" name="sm_order" value="Xóa vị trí đã chọn" /> 
          </div>
         
         
         
-        <div class="pagination">
-            <a href="#" class="prev">«</a>
-            <a href="#">1</a>
-            <a href="#" class="current">2</a>
-            ...
-            <a href="#">21</a>
-            <a href="#">22</a>
-            <a href="#" class="next">»</a>
-        </div>
         
         </form>
         

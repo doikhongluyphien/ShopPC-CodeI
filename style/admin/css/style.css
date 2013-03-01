@@ -229,6 +229,8 @@ body{
 	background-position: 37px -30px !important;
 }
 /*********************************************** CONTENT ***********************************************************/
+
+
 .bt_sm input[type=submit],.bt_sm input[type=reset]{
 	border: none;
 	margin-right: 1em;
@@ -1975,3 +1977,4 @@ div.uploader input{
 .sp_title{
 	font-weight:bold;
 }
+

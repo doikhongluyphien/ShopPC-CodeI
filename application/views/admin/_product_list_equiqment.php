@@ -109,13 +109,7 @@
                             </tbody>
         </table>
         
-        <div class="left input" style=" width:200px;">
-            <select name="sl_product" >
-                <option value="delete">Xóa mục đã chọn</option>
-            </select>
-            
-        </div>
-         <div  class="bt_sm" style="float:left;padding-top:5px;">
+         <div  class="bt_sm" style="float:left;padding-top:5px;margin-left: 50px">
              <input type="submit" name="sm_danhsach" value="Xóa vị trí đã chọn" /> 
          </div>
         <div class="pagination" >

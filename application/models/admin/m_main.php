@@ -84,7 +84,7 @@
      }
     function _category_list_tool(){
        $_data=array();
-        $query = $this->db->where('dparent',0)->order_by('did',"ASC")->get('tbl_danhsach')->result_array();
+        $query = $this->db->where('dparent',0)->order_by('dorder,did',"ASC")->get('tbl_danhsach')->result_array();
        
        foreach($query as $r=>$value)
         {
@@ -536,7 +536,9 @@
            $list = $this->uri->segment(4);
            $query = $this->db->where('hid',$list)->delete('tbl_hoadon');
        }
-       
+       function order_del_donhang($id){
+           $query = $this->db->where('hid',$id)->delete('tbl_hoadon');
+       }
     // update and dell_all
  
     function order_delete_all($data){
@@ -637,19 +639,33 @@
        
        function set_order_giohang($gh){
            if($gh =="_order_linhkien"){
-                $query = $this->db->select('fullname,gloai,email,diachi,phone,hid,yeucau,timepost,xuly')->from('tbl_hoadon')->join('tbl_user','tbl_user.user_id = tbl_hoadon.uid')->where('gloai','le')->order_by('hid',' DESC')->get()->result_array();
+                $query = $this->db->select('fullname,gloai,email,diachi,phone,tbl_hoadon.hid,yeucau,timepost,xuly')->from('tbl_hoadon')->join('tbl_user','tbl_user.user_id = tbl_hoadon.uid')->where('gloai','le')->order_by('tbl_hoadon.hid',' DESC')->get()->result_array();
                    if($query){
                        foreach ($query as $key => $value) {
                            $this->_data_gh["DANH SÁCH ĐƠN ĐẶT HÀNG LINH KIỆN MÁY TÍNH"][] = $value;
+                           
+                            $query1 = $this->db->select('sptitle,soluong,gia')->from('tbl_cthoadon')->join('tbl_sanpham','tbl_sanpham.spid =  tbl_cthoadon.spid')->where('hid',$value["hid"])->get()->result_array();
+                       foreach ($query1 as $key1 => $value1) {
+                           $this->_data_gh["DANH SÁCH ĐƠN ĐẶT HÀNG LINH KIỆN MÁY TÍNH"][$value["hid"]][] = $value1;
+                           
+                       } 
+                       
                        }
                    } //end if
            } //end if
            elseif($gh =="_order_cauhinh"){
-               $query = $this->db->select('fullname,gloai,email,diachi,phone,hid,yeucau,timepost,xuly')->from('tbl_hoadon')->join('tbl_user','tbl_user.user_id = tbl_hoadon.uid')->where('gloai','bo')->order_by('hid',' DESC')->get()->result_array();
+               $query = $this->db->select('fullname,gloai,email,diachi,phone,tbl_hoadon.hid,yeucau,timepost,xuly')->from('tbl_hoadon')->join('tbl_user','tbl_user.user_id = tbl_hoadon.uid')->where('gloai','bo')->order_by('tbl_hoadon.hid',' DESC')->get()->result_array();
                    if($query){
                        foreach ($query as $key => $value) {
-                           $this->_data_gh["DANH SÁCH ĐƠN ĐẶT HÀNG CẤU HÌNH MÁY TÍNH"][] = $value;
+                           
+                          $this->_data_gh["DANH SÁCH ĐƠN ĐẶT HÀNG CẤU HÌNH MÁY TÍNH"][] = $value;
+                       $query1 = $this->db->select('sptitle,soluong,gia')->from('tbl_cthoadon')->join('tbl_sanpham','tbl_sanpham.spid =  tbl_cthoadon.spid')->where('hid',$value["hid"])->get()->result_array();
+                       foreach ($query1 as $key1 => $value1) {
+                           $this->_data_gh["DANH SÁCH ĐƠN ĐẶT HÀNG CẤU HÌNH MÁY TÍNH"]["hid"][] = $value1;
+                       } 
+                           
                        }
+                       
                    } //end if
            }//end if 
                    
@@ -657,6 +673,12 @@
         function get_order_giohang(){
             return $this->_data_gh;
         }
+       function _detail_list($id){
+           return $this->db->select('gloai,xuly,tbl_cthoadon.hid,sptitle,soluong,gia,spbh')->from('tbl_cthoadon')->join('tbl_sanpham','tbl_sanpham.spid =  tbl_cthoadon.spid')->join('tbl_hoadon','tbl_hoadon.hid = tbl_cthoadon.hid')->where('tbl_cthoadon.hid',$id)->get()->result_array();
+       }
+       function _detail_up_date($data){
+           $this->db->update_batch('tbl_hoadon',$data,"hid");
+       }
        
        function tintuc_list(){
            $_data = array();
@@ -804,22 +826,19 @@
            return $_data;
         }
         function nhanvien(){
-            $query = $this->db->select('user_id,email')->where('permission','2')->get('tbl_user')->result_array();
+            $query = $this->db->select('*')->get('tbl_support')->result_array();
             return $query;
         }
         function nhanvien_update(){
             $data = $this->input->post();
-            $_data = array(
-             array('user_id' => $data["user_1"],
-                    'email' => $data["user1"]),
-             array('user_id' => $data["user_2"],
-                    'email' => $data["user2"]),
-             array('user_id' => $data["user_3"],
-                    'email' => $data["user3"]),
-             array('user_id' => $data["user_4"],
-                    'email' => $data["user4"]),                     
+            $_data[] = array(
+             'bhnv1'=>$data["user_1"] , 
+             'bhnv2'=>$data["user_2"] ,
+             'bhnv3'=>$data["user_3"] ,
+             'bhnv4'=>$data["user_4"] , 
+             'bhid'=>'1'                  
             );
-            $this->db->update_batch('tbl_user',$_data,'user_id');
+            $this->db->update_batch('tbl_support',$_data,'bhid');
         }
 function contact_khachhang(){
     $ctid = $this->input->post('ctid');

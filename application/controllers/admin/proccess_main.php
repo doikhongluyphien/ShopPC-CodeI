@@ -42,13 +42,14 @@ class Proccess_main extends CI_Controller {
         $_data = array();
         $txt_id=$this->input->post("txt_id");
         $action = $this->input->post("action_category");
+        $sm_save = $this->input->post("sm_save");
+        $sm_del = $this->input->post("sm_del");
         $hid =$this->input->post("hid");
         $check =$this->input->post("chon");
         $status = "";
-        if (count($check[0]) >= 1) {
-        
-        if($action == "save"){
+        if(isset($sm_save) && !empty($sm_save)){
            
+          if (count($check[0]) >= 1) {
           for ($j=($check[0]-1); $j < ($check[count($check)-1]) ; $j++) { 
               $_data []= array(
               'did'=>$hid[$j],
@@ -56,19 +57,31 @@ class Proccess_main extends CI_Controller {
               );
              
           } 
+         } else {
+             for ($i=0; $i < count($hid) ; $i++) { 
+                 $_data []= array(
+              'did'=>$hid[$i],
+              'dorder'=>$txt_id[$i]
+              );
+             }
+           
+        }
          $this->m_main->category_update_all($_data); 
          $status = "Sửa thành công";
-        }elseif($action == "delete"){
-            
+        }elseif(isset($sm_del) && !empty($sm_del)){
+            if (count($check[0]) >= 1) {
+        
             for ($j=($check[0]-1); $j < ($check[count($check)-1]) ; $j++) { 
               $_data[]  =array('did'=>$hid[$j]);
             }
             $this->m_main->category_delete_all($_data); 
          $status = "Xóa thành công";
-        }   
-        } else {
+         } else {
           $status = "Bạn chưa check các dòng cần thay đổi";  
         }
+         
+        }   
+        
        redirect("admin/redirect/danhmuc_list");
     }
     
@@ -120,7 +133,7 @@ class Proccess_main extends CI_Controller {
      function action_del_all(){
          $action =$this->input->post("sm_del");
          $sl_check= $this->input->post("chon");
-         if($action == "Xóa vị trí đã chọn" ){
+         if(isset($action) && !empty($action) ){
              for ($i=0; $i < count($sl_check); $i++) { 
                  $data["nid"]=$sl_check[$i];
                  $this->m_main->production_delete_all($data);
@@ -341,7 +354,7 @@ class Proccess_main extends CI_Controller {
      function product_del_all(){
          $action =$this->input->post("sm_danhsach");
          $sl_check= $this->input->post("chon");
-         if($action == "Xóa vị trí đã chọn" ){
+         if(isset($action) && !empty($action) ){
              for ($i=0; $i < count($sl_check); $i++) { 
                  $data["spid"]=$sl_check[$i];
                  
@@ -361,9 +374,36 @@ class Proccess_main extends CI_Controller {
         $this->index();
     }
     // don dat hang 
+    
+    function order_list_update(){
+        $url = $this->uri->segment(4);
+        $this->session->set_userdata('category_list',"detail_".$url);
+        redirect("admin/redirect/order_list");
+        
+    }
+    function detail_update(){
+        $actionsave = $this->input->post('sm_save');
+        $actiondel = $this->input->post('sm_order');
+        if (isset($actiondel) && !empty($actiondel)) {
+            $this->m_main->order_del_donhang($this->input->post('hid'));
+        } else {
+           
+           $_data[] = array('xuly' => $this->input->post("action"),
+            'hid' => $this->input->post("hid"));
+            $this->m_main->_detail_up_date($_data);
+            
+        }
+        $url = $this->uri->segment(4);
+        if ($url == "le") {
+            redirect("admin/redirect/donhang_lk");
+        } else {
+            redirect("admin/redirect/donhang_mt");
+        }
+        
+    }
     function order_list_del(){
         $this->m_main->order_list_del();
-        $url = $this->uri->segment(5);
+        $url = $this->uri->segment(4);
         if ($url == "le") {
             redirect("admin/redirect/donhang_lk");
         } else {
@@ -372,6 +412,7 @@ class Proccess_main extends CI_Controller {
         
         
     }
+    
      function order_del_all(){
          $action =$this->input->post("sm_order");
          $sl_check= $this->input->post("chon");

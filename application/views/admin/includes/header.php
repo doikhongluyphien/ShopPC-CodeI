@@ -71,11 +71,20 @@
               
                $('#sidebar ul li:has(ul)').click(function(){
                   $('#sidebar ul li a').css('background-position','96% -5px');
-                  $('#sidebar ul li ul').slideUp('slow');
-                  $(this).children('ul').slideDown('slow');
+                  $('#sidebar ul li ul').stop().slideUp('slow');
+                  $(this).children('ul').stop().slideDown('slow');
                   $(this).children('a').css('background-position','96% -53px');
                });
            });
+        </script>
+        
+        <script>
+            
+             function start()
+                {
+                    document.getElementById('hv_tt').focus();       
+                }
+            window.onload = start ;    
         </script>
       <!-- category_new-->
 

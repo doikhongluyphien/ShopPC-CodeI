@@ -174,6 +174,8 @@
           return $this->m_main->_load_flash($mang[1]);
         }elseif (isset($mang[0]) && $mang[0] == "acticle"){
           return $this->m_main->_acticle_tintuc($mang[1]);
+        }elseif (isset($mang[0]) && $mang[0] == "detail"){
+          return $this->m_main->_detail_list($mang[1]);
         }
         
      }

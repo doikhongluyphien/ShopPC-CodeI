@@ -22,7 +22,7 @@
                                         echo '<tr>';
                                         
                                         echo '<td>'.$i.'</td>';
-                                        echo '<td class="td_dm blu img_light" alt="'.$value["ctid"].'" >'.$value["fullname"]." - ".$value["email"].'</td>';
+                                        echo '<td class="td_dm blu img_light" alt="'.$value["ctid"].'" ><span id="hv_tt"">'.$value["fullname"]." - ".$value["email"].'</span></td>';
                                         echo '<td>'.$value["subject"].'</td>';
                                         echo '<td>'.$value["datesubmit"].'</td>';
                                         echo ' <td class="actions">

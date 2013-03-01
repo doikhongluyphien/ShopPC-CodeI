@@ -13,6 +13,7 @@
          $pass=$this->input->post('txt_pass');
          $this->db->where('email',$name);
          $this->db->where('password',md5($pass));
+         $this->db->where('permission',1);
          $query=$this->db->get('tbl_user');
          if($query->num_rows==1){
              return TRUE;
